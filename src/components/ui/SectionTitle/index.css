@@ -1,0 +1,29 @@
+.section {
+  width: 100%;
+  text-align: right;
+  position: relative !important;
+}
+
+.section__title {
+  color: #284258;
+  font-weight: bold;
+}
+
+.section::before {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -15px !important;
+  right: 0 !important;
+  width: 100px !important;
+  height: 7px !important;
+  background-color: #ffc700 !important;
+}
+
+@media (max-width: 992px) {
+  .section::before {
+    right: auto !important;
+    left: auto !important;
+    width: 80px !important;
+    margin: 0 auto !important;
+  }
+}

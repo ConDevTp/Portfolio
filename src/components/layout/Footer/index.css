@@ -1,0 +1,30 @@
+.footer {
+  background: #ffc700;
+  padding: 20px 70px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 3000px;
+  margin: 0 auto;
+  margin-top: 200px;
+  line-height: 1.8;
+}
+.footer small {
+  color: #354459;
+  text-align: center !important;
+}
+
+.footer span,
+.footer small:nth-child(2) {
+  color: #000;
+  margin: 0 5px;
+  text-align: center !important;
+  direction: ltr;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 100px;
+  }
+}
