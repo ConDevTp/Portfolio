@@ -16,7 +16,7 @@ import {
 const Service = () => {
   return (
     <Content>
-      <div className="service-container">
+      <div className="service-container" id="services">
         <SectionTitle title="خـدمات من" />
         <div className="service-content mt-5 w-100">
           <div className="service-item">

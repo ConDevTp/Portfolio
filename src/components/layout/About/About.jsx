@@ -17,7 +17,7 @@ const About = () => {
 
   return (
     <Content>
-      <div className="about-container ">
+      <div className="about-container " id="about">
         <SectionTitle title="دربـــاره مـن" />
         <div className="about-content mt-5 d-flex justify-content-between align-items-center flex-column-reverse flex-lg-row-reverse">
           <div className="d-flex flex-column about-text mt-4 mt-lg-0">

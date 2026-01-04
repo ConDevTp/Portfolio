@@ -9,7 +9,7 @@ const Article = () => {
   return (
     <section className="article-bg">
       <Content>
-        <div className="article-container">
+        <div className="article-container" id="articles">
           <SectionTitle title="آخرین مقالات" />
           <div className="article-content mt-5">
             <div className="article-item">

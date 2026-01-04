@@ -27,7 +27,7 @@ const Skill = () => {
   return (
     <div className="skill-bg">
       <Content>
-        <div className="skill-container">
+        <div className="skill-container" id="skills">
           <SectionTitle title="تـخصص ها" />
 
           <div className="skill-content mt-5">

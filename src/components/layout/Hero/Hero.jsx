@@ -17,7 +17,10 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <Content>
-      <section className="hero w-100 d-flex justify-content-center align-items-center flex-column">
+      <section
+        className="hero w-100 d-flex justify-content-center align-items-center flex-column"
+        id="home"
+      >
         <h1>
           Arash Ch{" "}
           <h1 className="d-none d-md-inline" style={{ color: "#ffc700" }}>

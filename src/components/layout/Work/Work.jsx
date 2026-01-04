@@ -59,7 +59,7 @@ const Work = () => {
 
   return (
     <Content>
-      <div className="work-container">
+      <div className="work-container" id="portfolio">
         <SectionTitle title="نـمونه کارها" />
         <div className="work-content d-flex flex-column">
           <div ref={sliderRef} className="keen-slider mt-5">

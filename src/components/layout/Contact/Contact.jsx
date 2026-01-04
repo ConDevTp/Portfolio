@@ -54,7 +54,7 @@ const Contact = () => {
 
   return (
     <Content>
-      <div className="contact-container">
+      <div className="contact-container" id="contact">
         <SectionTitle title="تماس با من" />
         <div className="contact-content mt-5 d-flex justify-content-center align-items-center flex-column">
           <img

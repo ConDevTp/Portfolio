@@ -63,7 +63,7 @@ const Certs = () => {
 
   return (
     <Content>
-      <div className="certs-container d-flex flex-column">
+      <div className="certs-container d-flex flex-column" id="certs">
         <SectionTitle title="مـــدارک" />
         <div className="certs-content mt-5">
           {visibleCerts.map(({ img, org, title }, i) => (

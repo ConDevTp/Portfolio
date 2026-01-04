@@ -132,3 +132,13 @@
     color: #191d30 !important;
   }
 }
+
+/* همه بخش‌های active */
+.nav-list .active {
+  color: #191d30 !important; /* متن بقیه بخش‌ها */
+}
+
+/* خانه وقتی active و صفحه در بالا است */
+.nav-list .active.home-initial {
+  color: #ffc700 !important; /* متن خانه زرد */
+}

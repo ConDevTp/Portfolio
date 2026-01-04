@@ -2,6 +2,9 @@ body {
   position: relative;
   background: #f4f5f7;
 }
+html {
+  scroll-behavior: smooth !important;
+}
 body::before {
   content: "";
   position: absolute;
