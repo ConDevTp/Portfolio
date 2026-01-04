@@ -16,17 +16,21 @@
   justify-content: space-around !important;
 }
 
-.keen-slider img {
+.keen-slider a {
   height: 100%;
   width: 32% !important;
 }
-.keen-slider__slide img {
+.keen-slider img {
+  height: 100% !important;
+  width: 100% !important;
+}
+.keen-slider__slide a {
   -webkit-transform: scale(0.97);
   transform: scale(0.97);
   transition: all 0.3s;
 }
 
-.keen-slider__slide img:hover {
+.keen-slider__slide a:hover {
   -webkit-transform: scale(1);
   transform: scale(1);
 }

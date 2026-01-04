@@ -33,6 +33,13 @@ import { useState } from "react";
 
 const Certs = () => {
   const [showAll, setShowAll] = useState(false);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useState(() => {
+    const handleResize = () => setInnerWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const certs = [
     {
@@ -186,7 +193,14 @@ const Certs = () => {
     },
   ];
 
-  const visibleCerts = showAll ? certs : certs.slice(0, 12);
+  const visibleCerts =
+    innerWidth > 500
+      ? showAll
+        ? certs
+        : certs.slice(0, 12)
+      : showAll
+      ? certs
+      : certs.slice(0, 3);
 
   return (
     <Content>
