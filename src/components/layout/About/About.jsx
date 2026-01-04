@@ -3,7 +3,6 @@ import Content from "../Content/Content";
 import "./index.css";
 import ConDevLogo from "../../../assets/img/about-logo.jpg";
 import ConDevLogoSm from "../../../assets/img/about-logo-sm.jpg";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const About = () => {
@@ -15,6 +14,16 @@ const About = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const scrollToCerts = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("certs");
+    if (element) {
+      const offset = 140; // فاصله از بالا مثل Nav
+      const top = element.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
     <Content>
       <div className="about-container " id="about">
@@ -22,46 +31,58 @@ const About = () => {
         <div className="about-content mt-5 d-flex justify-content-between align-items-center flex-column-reverse flex-lg-row-reverse">
           <div className="d-flex flex-column about-text mt-4 mt-lg-0">
             <p>
-              {" "}
-              من یه توسعه‌دهنده فرانت‌اند هستم که عاشق ساخت رابط‌های کاربری مدرن
-              و روانم. هدفم هم خلق تجربه‌هایی جذابه که کاربر ازش لذت ببره.
-            </p>{" "}
-            <p>
-              دارای مدارک فرانت‌اند از مایکروسافت، متا (فیسبوک) و آی‌بی‌ام (IBM)
-              که در رزومه قابل مشاهده است.
-              <Link to="/certs">
-                {" "}
-                <strong className="link-about">( مشاهده مدارک )</strong>
-              </Link>
-            </p>{" "}
-            <p>
-              متولد ۱۳۸۳ ساکن شیراز هستم؛ فعالیتم در حوزه برنامه‌نویسی را از سال
-              ۱۳۹۸ شروع کردم و از سال ۱۴۰۰ به‌صورت تخصصی وارد این عرصه شدم،
-              اکنون با گذشت بیش از ۶ سال و پس از کسب تجربه و مهارت‌های عملی در
-              حوزه فرانت‌اند، در پروژه‌های مختلف مشغول فعالیت هستم.
+              توسعه‌دهنده ارشد فرانت‌اند با بیش از ۶ سال تجربه تخصصی در ساخت
+              رابط‌های کاربری مدرن، <strong>performant</strong> و کاربرمحور،
+              متخصص خلق تجربه‌های کاربری روان و <strong>intuitive</strong>.
             </p>
             <p>
-              در کنار فعالیتم در حوزه توسعه فرانت‌اند، با برند آموزشی خودم
-              <strong>
+              دارای مدارک رسمی و معتبر فرانت‌اند از <strong>مایکروسافت،</strong>{" "}
+              متا <strong>(Meta)</strong> و آی‌بی‌ام <strong>(IBM)</strong>. این
+              گواهی‌نامه‌ها تسلط من بر استانداردهای جهانی و فناوری‌های پیشرفته
+              توسعه وب تأیید می‌کنن{" "}
+              <strong
+                onClick={scrollToCerts}
+                className="link-about"
+                style={{ cursor: "pointer" }}
+              >
                 {" "}
-                <a href="/certs" className="link-about">
-                  Con Dev
-                </a>{" "}
+                (مدارک در رزومه قابل مشاهده است)
               </strong>
-              به تولید محتوای تخصصی و آموزش مباحث پیشرفته‌ی توسعه وب می‌پردازم.{" "}
+            </p>
+            <p>
+              از سال ۱۳۹۸ وارد حوزه توسعه شدم و از ۱۴۰۰ به طور کاملاً تخصصی بر
+              فرانت‌اند متمرکز شده‌ام. اکنون با تجربه گسترده در پروژه‌های
+              چالش‌برانگیز، رابط‌هایی می‌سازم که از نظر فنی بی‌نقص و از نظر
+              کسب‌وکاری تأثیرگذار بر رشد محصول هستند.{" "}
+            </p>
+            <p>
+              همزمان، با برند آموزشی خودم
+              <strong>
+                <a
+                  href="https://www.instagram.com/con.dev"
+                  className="link-about mx-1"
+                >
+                  Con Dev
+                </a>
+              </strong>
+              به تولید محتوای تخصصی و آموزش مباحث پیشرفته توسعه وب می‌پردازم و
+              دانش خود را با جامعه توسعه‌دهندگان به اشتراک می‌گذارم.{" "}
             </p>
             <p>
               <strong>
-                جهت تایید صحت مدارک اینجانب میتوانید از طریق این{" "}
-                <a href="/certs" className="link-about">
-                  لینک{" "}
+                برای تأیید صحت مدارک و مشاهده جزئیات بیشتر، می‌توانید از{" "}
+                <a
+                  href="https://www.coursera.org/user/fed86c718d554ecffedc8856eaeaef09"
+                  className="link-about"
+                >
+                  لینک
                 </a>{" "}
-                اقدام کنید
+                اقدام کنید.
               </strong>
             </p>
           </div>
           <img
-            src={window.innerWidth < 992 ? ConDevLogoSm : ConDevLogo}
+            src={innerWidth < 992 ? ConDevLogoSm : ConDevLogo}
             alt="Con Dev - Arash Ch"
             className="mt-4 mt-lg-0"
           />
