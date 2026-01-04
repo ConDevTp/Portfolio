@@ -1,0 +1,100 @@
+.skill-bg {
+  position: relative;
+}
+
+.skill-bg::before {
+  content: "";
+  position: absolute;
+  top: 250px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: calc(100% - 200px);
+  background: url(../../../assets/img/skillBg.svg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 3000px;
+  margin: 0 auto;
+}
+.skill-container {
+  margin-top: 150px;
+  position: relative;
+}
+
+.skill-content {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 70px;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 40px;
+  padding: 55px;
+  padding-bottom: 0px;
+  background-color: #fff;
+}
+
+.progress {
+  width: 100%;
+  direction: ltr;
+  height: 6px;
+}
+
+.progress-item {
+  margin-bottom: 70px;
+  margin-top: 10px;
+}
+
+.progress-item h6 {
+  font-weight: 700;
+  color: #354459;
+  margin: 0px !important;
+  font-size: 18px;
+}
+
+.progress-item p {
+  color: #9c9c9c !important;
+  font-size: 18px;
+  margin: 0px !important;
+}
+
+@media (max-width: 992px) {
+  .skill-content {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 70px;
+    grid-template-columns: 1fr 1fr;
+    padding: 55px;
+    padding-bottom: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-content {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 0px 70px;
+    grid-template-columns: 1fr;
+    padding: 55px 30px;
+    padding-bottom: 0px;
+  }
+
+  .progress-item h6 {
+    font-size: 16px;
+  }
+
+  .progress-item p {
+    font-size: 16px;
+  }
+
+  .progress-item {
+    margin-bottom: 50px;
+    margin-top: 0px;
+  }
+  .skill-container {
+    margin-top: 110px;
+  }
+}
