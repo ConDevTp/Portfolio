@@ -27,7 +27,7 @@ const Hero = () => {
             /
           </h1>{" "}
           <br className="d-md-none" />
-          ConDev
+          Con Dev
         </h1>
         <div className="mt-4 pt-2">
           {" "}
@@ -49,41 +49,41 @@ const Hero = () => {
           />
         </div>
         <Link to="/about">
-          <button className="mt-5">بزن بریم !</button>
+          <button className="mt-5">دانلود رزومه</button>
         </Link>
 
         <div className="social-icons d-flex justify-content-center align-items-center mt-5">
           <a
             className="mx-1 mx-md-2 social-item"
-            href="https://www.instagram.com/yourprofile"
+            href="https://www.instagram.com/con.dev"
           >
             {" "}
             <FaInstagram />{" "}
           </a>
           <a
             className="mx-1 mx-md-2 social-item"
-            href="https://github.com/yourprofile"
+            href="https://github.com/ConDevTp"
           >
             {" "}
             <FaGithub />{" "}
           </a>
           <a
             className="mx-1 mx-md-2 social-item"
-            href="https://www.linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/con-dev-5b43a538b"
           >
             {" "}
             <FaLinkedinIn />{" "}
           </a>
           <a
             className="mx-1 mx-md-2 social-item"
-            href="https://www.youtube.com/yourprofile"
+            href="https://www.youtube.com/@ConDev-Tp"
           >
             {" "}
             <FaYoutube />{" "}
           </a>
           <a
             className="mx-1 mx-md-2 social-item"
-            href="https://www.pinterest.com/yourprofile"
+            href="https://pin.it/53DQhi58N"
           >
             {" "}
             <FaPinterestP />{" "}
