@@ -136,3 +136,29 @@
     line-height: 1.4;
   }
 }
+
+.cert-item {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.cert-item:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cert-img {
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+}
+
+.cert-item:hover .cert-img {
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+  border-radius: 7px 7px 0px 0px;
+}
