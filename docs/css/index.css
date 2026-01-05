@@ -1,0 +1,9 @@
+@import "./reset.css";
+@import "./fonts.css";
+
+*,
+*::before,
+*::after {
+  font-family: "Rokh", system-ui, sans-serif;
+  font-weight: 600;
+}
