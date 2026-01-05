@@ -1,3 +1,7 @@
+html[dir="ltr"] .work-content > * {
+  direction: rtl;
+}
+
 .work-container {
   margin-top: 200px;
 }

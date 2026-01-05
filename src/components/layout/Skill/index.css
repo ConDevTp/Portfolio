@@ -6,17 +6,16 @@
   content: "";
   position: absolute;
   top: 250px;
-  left: 0px;
-  right: 0px;
+  left: 0;
+  right: 0;
   width: 100%;
   height: calc(100% - 200px);
-  background: url(../../../assets/img/skillBg.svg);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(../../../assets/img/skillBg.webp) top center / cover no-repeat;
   max-width: 3000px;
   margin: 0 auto;
+  pointer-events: none;
 }
+
 .skill-container {
   margin-top: 150px;
   position: relative;
@@ -28,10 +27,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px 70px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   border-radius: 40px;
   padding: 55px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   background-color: #fff;
 }
 
@@ -39,6 +38,18 @@
   width: 100%;
   direction: ltr;
   height: 6px;
+  background-color: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+html[dir="ltr"] .skill-content {
+  direction: rtl;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 1.5s ease-in-out;
 }
 
 .progress-item {
@@ -46,54 +57,61 @@
   margin-top: 10px;
 }
 
-.progress-item h6 {
+.progress-item h3 {
   font-weight: 700;
   color: #354459;
-  margin: 0px !important;
+  margin: 0 !important;
   font-size: 18px;
 }
 
-.progress-item p {
+.progress-item span {
   color: #9c9c9c !important;
   font-size: 18px;
-  margin: 0px !important;
+  margin: 0 !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (max-width: 992px) {
   .skill-content {
-    display: grid;
-    align-items: center;
-    justify-content: center;
     gap: 10px 70px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     padding: 55px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
 }
 
 @media (max-width: 768px) {
   .skill-content {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    gap: 0px 70px;
+    gap: 0 70px;
     grid-template-columns: 1fr;
     padding: 55px 30px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
   }
 
-  .progress-item h6 {
+  .progress-item h3 {
     font-size: 16px;
   }
 
-  .progress-item p {
+  .progress-item span {
     font-size: 16px;
   }
 
   .progress-item {
     margin-bottom: 50px;
-    margin-top: 0px;
+    margin-top: 0;
   }
+
   .skill-container {
     margin-top: 110px;
   }

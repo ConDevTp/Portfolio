@@ -1,0 +1,162 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About Me",
+    "skills": "Skills",
+    "certs": "Certificates",
+    "portfolio": "Portfolio",
+    "articles": "Latest Articles",
+    "services": "Services",
+    "contact": "Contact Me"
+  },
+  "hero": {
+    "title": "Arash Ch / Con Dev",
+    "typing": [
+      "Front-End Developer",
+      "React & TypeScript",
+      "Problem Solver",
+      "UI/UX Lover"
+    ],
+    "downloadResume": "Download Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "p1": {
+      "before": "Senior Front-End Developer with over 6 years of professional experience in building modern, ",
+      "strong1": "performant",
+      "middle": " and user-centric interfaces, specialized in creating smooth and ",
+      "strong2": "intuitive",
+      "after": " user experiences."
+    },
+    "p2": {
+      "before": "Holding official and recognized front-end certifications from Microsoft, Meta, and IBM. These certificates confirm my mastery of global standards and advanced web development technologies ",
+      "link": "(certificates are available in the resume)"
+    },
+    "p3": "I entered the development field in 2019 and have been fully focused on front-end development since 2021. With extensive experience in challenging projects, I now build interfaces that are technically flawless and business-impactful for product growth.",
+    "p4": {
+      "before": "At the same time, through my educational brand ",
+      "after": " I produce advanced web development content and share my knowledge with the developer community."
+    },
+    "p5": {
+      "before": "To verify the authenticity of the certificates and view more details, you can proceed via this ",
+      "link": "link",
+      "after": "."
+    },
+    "scrollToCerts": "Scroll to certificates section",
+    "condevInstagram": "Con Dev Instagram",
+    "courseraProfile": "Coursera profile to view certificates",
+    "imageAlt": "Arash Ch - Con Dev, Front-End Developer"
+  },
+
+  "skills": {
+    "title": "Skills",
+    "levelLabel": "Level",
+    "levels": {
+      "professional": "Professional",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate"
+    }
+  },
+  "certs": {
+    "title": "Certificates",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "imageAlt": "{{title}} certificate from {{org}}"
+  },
+  "work": {
+    "title": "Portfolio",
+    "items": {
+      "1": "Project 1",
+      "2": "Project 2",
+      "3": "Project 3",
+      "4": "Project 4",
+      "5": "Project 5",
+      "6": "Project 6",
+      "7": "Project 7",
+      "8": "Project 8",
+      "9": "Project 9",
+      "10": "Project 10",
+      "11": "Project 11",
+      "12": "Project 12",
+      "13": "Project 13",
+      "14": "Project 14",
+      "15": "Project 15",
+      "16": "Project 16",
+      "17": "Project 17",
+      "18": "Project 18"
+    }
+  },
+  "articles": {
+    "title": "Latest Articles",
+    "items": [
+      {
+        "imageKey": "article1",
+        "title": "Frontend Roadmap",
+        "description": "If you are starting frontend development, this roadmap works as a step-by-step guide to help you understand where to start and how to progress.",
+        "aria": "Frontend roadmap article on Instagram",
+        "alt": "Frontend roadmap article image"
+      },
+      {
+        "imageKey": "article2",
+        "title": "Frontend Toolbox",
+        "description": "This toolbox includes essential tools and techniques every frontend developer should know to build faster, cleaner, and more professional projects.",
+        "aria": "Frontend toolbox article on Instagram",
+        "alt": "Frontend toolbox article image"
+      },
+      {
+        "imageKey": "article3",
+        "title": "5 Common CSS Mistakes",
+        "description": "These five common CSS mistakes are issues many developers face. Knowing them helps you write cleaner and more maintainable code.",
+        "aria": "Common CSS mistakes article on Instagram",
+        "alt": "Common CSS mistakes article image"
+      }
+    ]
+  },
+  "services": {
+    "title": "My Services",
+    "items": [
+      "Custom Website Development – React.js",
+      "Converting Figma & other designs to pixel-perfect code",
+      "Web Apps (Dashboard, E-commerce, etc.)",
+      "Complex Projects (SPA / PWA with Next.js & SSR)",
+      "Adding New Features",
+      "Digital Marketing & SEO",
+      "Banner & Visual Design with Figma & Adobe",
+      "Project Management & Development Teams",
+      "Network & Server Management"
+    ]
+  },
+  "contact": {
+    "title": "Contact Me",
+    "heading": "Write Your Message!",
+    "placeholders": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Your message ..."
+    },
+    "button": "Send Message",
+    "validation": {
+      "firstName": "Please enter your first name.",
+      "lastName": "Please enter your last name.",
+      "emailInvalid": "Invalid email address",
+      "emailRequired": "Email is required",
+      "subject": "Please enter a subject.",
+      "message": "Please enter your message."
+    },
+    "toast": {
+      "success": "Your message was sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "altLogo": "Con Dev logo – Arash Ch"
+  },
+  "footer": {
+    "rights": "All intellectual and material rights of this website belong to <brand>Con Dev</brand>.",
+    "copyright": "© 2026",
+    "ariaCopyright": "Copyright year 2026"
+  },
+  "app": {
+    "loading": "Loading..."
+  }
+}

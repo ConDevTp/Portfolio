@@ -1,32 +1,39 @@
 import Content from "../Content/Content";
 import "./index.css";
-import ConDev from "../../../assets/img/logo-condev.svg";
+import ConDev from "../../../assets/img/logo-condev.webp";
 import Nav from "./Nav";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [homeInitial, setHomeInitial] = useState(true);
+  const { i18n, t } = useTranslation();
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    document.documentElement.dir = lng === "fa" ? "rtl" : "ltr";
+    document.documentElement.lang = lng;
+  };
 
-  const handleLogoClick = (e) => {
+  const isFa = i18n.language === "fa";
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  const handleLogoClick = useCallback((e) => {
     e.preventDefault();
     const element = document.querySelector("#home");
     if (element) element.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
-  };
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 0) setHomeInitial(false);
-      else setHomeInitial(true);
-    };
-
+    const onScroll = () => setHomeInitial(window.scrollY <= 0);
     window.addEventListener("scroll", onScroll);
-    onScroll(); // sync اول صفحه
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -38,15 +45,44 @@ const Header = () => {
         }`}
       >
         <div className="d-flex flex-row-reverse justify-content-between w-100 align-items-center">
-          <a href="#home" onClick={handleLogoClick}>
-            <img src={ConDev} alt="Con Dev" className="logo-header" />
+          <a
+            href="#home"
+            onClick={handleLogoClick}
+            aria-label={t("header.home")}
+          >
+            <img
+              src={ConDev}
+              alt="Con Dev Logo"
+              className="logo-header"
+              loading="lazy"
+            />
           </a>
+
+          <div className="language-switcher d-flex align-items-center mx-1 mx-md-5">
+            <button
+              onClick={() => changeLanguage("fa")}
+              className={`lang-btn ${isFa ? "active" : ""}`}
+              aria-label="FA"
+            >
+              FA
+            </button>
+            <span className="mx-1 text-white-50">|</span>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={`lang-btn ${!isFa ? "active" : ""}`}
+              aria-label="EN"
+            >
+              EN
+            </button>
+          </div>
 
           <button
             onClick={toggleMenu}
             className={`d-flex justify-content-center align-items-center btn-openNav ${
               isOpen ? "open" : ""
             }`}
+            aria-label={isOpen ? t("common.close") : t("common.open")}
+            type="button"
           >
             {isOpen ? <IoClose size={30} /> : <FaBars size={24} />}
           </button>
@@ -58,4 +94,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

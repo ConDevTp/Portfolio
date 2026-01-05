@@ -15,17 +15,20 @@
 
 .about-content img {
   max-width: 35%;
+  height: auto;
 }
 
 .about-text {
   max-width: 60%;
 }
+
 .about-content p {
   color: #9c9c9c;
   font-size: 20px;
   text-align: justify;
   line-height: 2.2;
   word-spacing: 5px;
+  margin-bottom: 1.5rem;
 }
 
 .about-content strong,
@@ -34,7 +37,7 @@
   font-weight: bold;
   text-decoration: none;
   font-size: 18px;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .about-content p:last-child strong {
@@ -43,6 +46,10 @@
 
 .link-about:hover {
   color: #ffc700 !important;
+}
+
+.link-about {
+  cursor: pointer;
 }
 
 @media (max-width: 992px) {
@@ -63,7 +70,8 @@
   .about-container {
     margin-top: 150px;
   }
+
   .about-content p:last-child {
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
   }
 }

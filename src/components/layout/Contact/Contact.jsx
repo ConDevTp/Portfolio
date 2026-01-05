@@ -4,11 +4,15 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import Content from "../Content/Content";
-import ConDevLogo from "../../../assets/img/logo-condev.svg";
+import ConDevLogo from "../../../assets/img/logo-condev.webp";
 import emailjs from "@emailjs/browser";
 import "./index.css";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -18,13 +22,13 @@ const Contact = () => {
       message: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required("نام را وارد کنید."),
-      lastName: Yup.string().required("نام خانوادگی را وارد کنید."),
+      firstName: Yup.string().required(t("contact.validation.firstName")),
+      lastName: Yup.string().required(t("contact.validation.lastName")),
       email: Yup.string()
-        .email("ایمیل معتبر نیست")
-        .required("ایمیل الزامی است"),
-      subject: Yup.string().required("موضوع را وارد کنید."),
-      message: Yup.string().required("متن پیام را وارد کنید."),
+        .email(t("contact.validation.emailInvalid"))
+        .required(t("contact.validation.emailRequired")),
+      subject: Yup.string().required(t("contact.validation.subject")),
+      message: Yup.string().required(t("contact.validation.message")),
     }),
     onSubmit: (values, { resetForm }) => {
       emailjs
@@ -36,11 +40,11 @@ const Contact = () => {
         )
         .then(
           () => {
-            toast.success("پیام شما با موفقیت ارسال شد!");
+            toast.success(t("contact.toast.success"));
             resetForm();
           },
-          (error) => {
-            toast.error("ارسال پیام با خطا مواجه شد - لطفا مجدد تلاش کنید. ");
+          () => {
+            toast.error(t("contact.toast.error"));
           }
         );
     },
@@ -48,80 +52,107 @@ const Contact = () => {
 
   const handleErrors = () => {
     const errors = formik.errors;
-    const firstError = Object.keys(errors)[0];
-    if (firstError) toast.error(errors[firstError]);
+    const touched = formik.touched;
+    const firstErrorKey = Object.keys(errors).find((key) => touched[key]);
+    if (firstErrorKey) {
+      toast.error(errors[firstErrorKey]);
+    }
   };
 
   return (
     <Content>
-      <div className="contact-container" id="contact">
-        <SectionTitle title="تماس با من" />
+      <section className="contact-container" id="contact">
+        <SectionTitle title={t("contact.title")} />
         <div className="contact-content mt-5 d-flex justify-content-center align-items-center flex-column">
           <img
             src={ConDevLogo}
-            alt="Con Dev - Arash Ch"
+            alt={t("contact.altLogo")}
             className="condev-logo-contact mt-3 pt-2 pt-md-0 mt-md-5"
+            loading="lazy"
           />
           <div className="w-100 mt-4 pt-2 pt-lg-0 mt-md-5">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                if (!formik.isValid) handleErrors();
                 formik.handleSubmit();
+                if (
+                  Object.keys(formik.errors).length > 0 &&
+                  formik.submitCount > 0
+                ) {
+                  handleErrors();
+                }
               }}
-              className="d-flex flex-column align-items-center justify-content-center w-100 contact-form  mt-md-4 mx-auto"
+              className="d-flex flex-column align-items-center justify-content-center w-100 contact-form mt-md-4 mx-auto"
+              noValidate
             >
-              <h3 className="mt-4 pt-2">پیام خود را بنویسید!</h3>
+              <h3 className="mt-4 pt-2">{t("contact.heading")}</h3>
+
               <input
                 type="text"
-                placeholder="نام"
+                placeholder={t("contact.placeholders.firstName")}
                 name="firstName"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
+                required
               />
+
               <input
                 type="text"
-                placeholder="نام خانوادگی"
+                placeholder={t("contact.placeholders.lastName")}
                 name="lastName"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.lastName}
+                required
               />
+
               <input
                 type="email"
-                placeholder="ایمیل"
+                placeholder={t("contact.placeholders.email")}
                 name="email"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
+                required
               />
+
               <input
                 type="text"
-                placeholder="موضوع"
+                placeholder={t("contact.placeholders.subject")}
                 name="subject"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.subject}
+                required
               />
+
               <textarea
-                placeholder="متن پیام ..."
+                placeholder={t("contact.placeholders.message")}
                 className="mb-3"
                 name="message"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.message}
-              ></textarea>
+                required
+                rows="5"
+              />
+
               <button type="submit" className="mt-5">
-                ارسال پیام
+                {t("contact.button")}
               </button>
             </form>
           </div>
         </div>
-      </div>
-      <ToastContainer position="bottom-right" theme="colored" />
+      </section>
+
+      <ToastContainer
+        position="bottom-right"
+        theme="colored"
+        autoClose={5000}
+      />
     </Content>
   );
 };
 
-export default Contact;
+export default React.memo(Contact);

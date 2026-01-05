@@ -1,29 +1,36 @@
 import "./App.css";
-import About from "./components/layout/About/About";
-import Article from "./components/layout/Article/Article";
-import Certs from "./components/layout/Certs/Certs";
-import Contact from "./components/layout/Contact/Contact";
-import Footer from "./components/layout/Footer/Footer";
-import Header from "./components/layout/Header/Header";
-import Hero from "./components/layout/Hero/Hero";
-import Service from "./components/layout/Service/Service";
-import Skill from "./components/layout/Skill/Skill";
-import Work from "./components/layout/Work/Work";
+import React, { lazy, Suspense } from "react";
+import { useTranslation } from "react-i18next";
+
+const Header = lazy(() => import("./components/layout/Header/Header"));
+const Hero = lazy(() => import("./components/layout/Hero/Hero"));
+const About = lazy(() => import("./components/layout/About/About"));
+const Skill = lazy(() => import("./components/layout/Skill/Skill"));
+const Certs = lazy(() => import("./components/layout/Certs/Certs"));
+const Work = lazy(() => import("./components/layout/Work/Work"));
+const Article = lazy(() => import("./components/layout/Article/Article"));
+const Service = lazy(() => import("./components/layout/Service/Service"));
+const Contact = lazy(() => import("./components/layout/Contact/Contact"));
+const Footer = lazy(() => import("./components/layout/Footer/Footer"));
 
 function App() {
+  const { t } = useTranslation();
+
   return (
-    <>
-      <Header />
-      <Hero />
-      <About />
-      <Skill />
-      <Certs />
-      <Work />
-      <Article />
-      <Service />
-      <Contact />
-      <Footer />
-    </>
+    <Suspense fallback={<div className="loading">{t("app.loading")}</div>}>
+      <>
+        <Header />
+        <Hero />
+        <About />
+        <Skill />
+        <Certs />
+        <Work />
+        <Article />
+        <Service />
+        <Contact />
+        <Footer />
+      </>
+    </Suspense>
   );
 }
 

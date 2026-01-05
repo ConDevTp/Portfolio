@@ -1,50 +1,75 @@
 import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import Content from "../Content/Content";
 import "./index.css";
-import img from "../../../assets/img/Article/1.jpg";
-import img2 from "../../../assets/img/Article/2.jpg";
-import img3 from "../../../assets/img/Article/3.jpg";
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+import fa1 from "../../../assets/img/Article/1.webp";
+import fa2 from "../../../assets/img/Article/2.webp";
+import fa3 from "../../../assets/img/Article/3.webp";
+
+import en1 from "../../../assets/img/Article/1-en.webp";
+import en2 from "../../../assets/img/Article/2-en.webp";
+import en3 from "../../../assets/img/Article/3-en.webp";
+
+const images = {
+  fa: {
+    article1: fa1,
+    article2: fa2,
+    article3: fa3,
+  },
+  en: {
+    article1: en1,
+    article2: en2,
+    article3: en3,
+  },
+};
 
 const Article = () => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
+  const articles = t("articles.items", {
+    returnObjects: true,
+  });
+
   return (
     <section className="article-bg">
       <Content>
-        <div className="article-container" id="articles">
-          <SectionTitle title="آخرین مقالات" />
-          <div className="article-content mt-5">
-            <a href="https://www.instagram.com/p/DQeSpQEEdoB/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
-              <div className="article-item">
-                <img src={img} alt="Article" />
-                <h3>نقشه ی راه فرانت‌اند</h3>
-                <p>
-                  اگه تازه می‌خوای وارد دنیای فرانت‌اند بشی، این نقشه راه مثل یه
-                  راهنمای قدم‌به‌قدم می‌مونه که می‌تونه مسیرت رو روشن کنه و بهت
-                  نشون بده از کجا شروع کنی و به کجا برسی.{" "}
-                </p>
-              </div>
-            </a>
-            <a href="https://www.instagram.com/p/DQhFCeDjBGL/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
-              <div className="article-item">
-                <img src={img2} alt="Article" />
-                <h3>جعبه ابزار فرانت‌اند</h3>
-                <p>
-                  این جعبه ابزار، مجموعه‌ای از مهم‌ترین ابزارها و تکنیک‌هاست که
-                  هر فرانت‌اند کاری باید بلد باشه تا پروژه‌هاش راحت‌تر، سریع‌تر،
-                  حرفه‌ای‌تر و خلاقانه‌تر پیش برن و بهترین نتیجه رو بگیره.{" "}
-                </p>
-              </div>
-            </a>
-            <a href="https://www.instagram.com/p/DQrUojajHrY/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
-              <div className="article-item">
-                <img src={img3} alt="Article" />
-                <h3>۵ اشتباه رایج در CSS</h3>
-                <p>
-                  این ۵ اشتباه رایج در CSS، نکاتی هستن که خیلی از فرانت‌اند
-                  کارها مرتکبش می‌شن و شناختشون کمک می‌کنه کدهای تمیزتر، سریع‌تر
-                  و حرفه‌ای‌تر بنویسی و از دردسرهای بعدی جلوگیری کنی.{" "}
-                </p>
-              </div>
-            </a>
+        <div
+          className="article-container"
+          id="articles"
+          aria-labelledby="articles-title"
+        >
+          <SectionTitle title={t("articles.title")} id="articles-title" />
+
+          <div className="article-content mt-5" role="list">
+            {articles.map((item, index) => (
+              <a
+                key={index}
+                href={
+                  [
+                    "https://www.instagram.com/p/DQeSpQEEdoB/",
+                    "https://www.instagram.com/p/DQhFCeDjBGL/",
+                    "https://www.instagram.com/p/DQrUojajHrY/",
+                  ][index]
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none"
+                aria-label={item.aria}
+              >
+                <article className="article-item" role="listitem">
+                  <img
+                    src={images[lang][item.imageKey]}
+                    alt={item.alt}
+                    loading="lazy"
+                  />
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              </a>
+            ))}
           </div>
         </div>
       </Content>
@@ -52,4 +77,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default React.memo(Article);

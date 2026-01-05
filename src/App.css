@@ -1,10 +1,26 @@
 body {
   position: relative;
   background: #f4f5f7;
+  min-height: 100vh;
 }
+
+.loading {
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 100vh !important;
+  color: #9c9c9c !important;
+  font-size: 20px !important;
+  vertical-align: middle !important;
+}
+
 html {
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
 }
+
 body::before {
   content: "";
   position: absolute;
@@ -12,8 +28,9 @@ body::before {
   left: 0;
   width: 100%;
   height: 956px;
-  background: url(./assets/img/bg.svg) top left / cover no-repeat;
+  background: url(./assets/img/bg.webp) top left / cover no-repeat;
   z-index: -1;
+  pointer-events: none;
 }
 
 p {
@@ -31,13 +48,14 @@ h2 {
 }
 
 .Toastify__toast {
-  font-family: "Rokh" !important;
+  font-family: "Rokh", system-ui, sans-serif !important;
 }
 
 @media (max-width: 768px) {
   body::before {
     height: 1100px;
   }
+
   p,
   strong,
   strong > * {
@@ -47,8 +65,9 @@ h2 {
 
 @media (max-width: 600px) {
   body::before {
-    height: 1020px !important;
+    height: 1020px;
   }
+
   h1 {
     font-size: 45px;
     font-weight: bold;
@@ -58,17 +77,19 @@ h2 {
     font-size: 25px;
   }
 
-  .Toastify__toast-theme--colored.Toastify__toast--error {
-    color: var(--toastify-text-color-error);
-    background: var(--toastify-color-error);
-    width: 80% !important;
-    margin-left: 20% !important;
-    margin-bottom: 5% !important;
-  }
-
+  .Toastify__toast-theme--colored.Toastify__toast--error,
   .Toastify__toast-theme--colored.Toastify__toast--success {
     width: 80% !important;
     margin-left: 20% !important;
-    margin-bottom: 5% !important;
+    margin-right: auto !important;
+    margin-bottom: 2.5% !important;
+  }
+
+  html[dir="ltr"] .Toastify__toast-theme--colored.Toastify__toast--error,
+  .Toastify__toast-theme--colored.Toastify__toast--success {
+    width: 80% !important;
+    margin-left: 15% !important;
+    margin-right: auto !important;
+    margin-bottom: 2.5% !important;
   }
 }

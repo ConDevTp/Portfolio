@@ -2,40 +2,43 @@ import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import Content from "../Content/Content";
 import "./index.css";
 
-import IBM1 from "../../../assets/img/IBM/1.jpg";
-import IBM2 from "../../../assets/img/IBM/2.jpg";
-import IBM3 from "../../../assets/img/IBM/3.jpg";
-import IBM4 from "../../../assets/img/IBM/4.jpg";
-import IBM5 from "../../../assets/img/IBM/5.jpg";
-import IBM6 from "../../../assets/img/IBM/6.jpg";
-import IBM7 from "../../../assets/img/IBM/7.jpg";
-import IBM8 from "../../../assets/img/IBM/8.jpg";
-import IBM9 from "../../../assets/img/IBM/9.jpg";
-import IBM10 from "../../../assets/img/IBM/10.jpg";
+import IBM1 from "../../../assets/img/IBM/1.webp";
+import IBM2 from "../../../assets/img/IBM/2.webp";
+import IBM3 from "../../../assets/img/IBM/3.webp";
+import IBM4 from "../../../assets/img/IBM/4.webp";
+import IBM5 from "../../../assets/img/IBM/5.webp";
+import IBM6 from "../../../assets/img/IBM/6.webp";
+import IBM7 from "../../../assets/img/IBM/7.webp";
+import IBM8 from "../../../assets/img/IBM/8.webp";
+import IBM9 from "../../../assets/img/IBM/9.webp";
+import IBM10 from "../../../assets/img/IBM/10.webp";
 
-import MS1 from "../../../assets/img/Microsoft/1.jpg";
-import MS2 from "../../../assets/img/Microsoft/2.jpg";
-import MS3 from "../../../assets/img/Microsoft/3.jpg";
-import MS4 from "../../../assets/img/Microsoft/4.jpg";
-import MS5 from "../../../assets/img/Microsoft/5.jpg";
-import MS6 from "../../../assets/img/Microsoft/6.jpg";
-import MS7 from "../../../assets/img/Microsoft/7.jpg";
+import MS1 from "../../../assets/img/Microsoft/1.webp";
+import MS2 from "../../../assets/img/Microsoft/2.webp";
+import MS3 from "../../../assets/img/Microsoft/3.webp";
+import MS4 from "../../../assets/img/Microsoft/4.webp";
+import MS5 from "../../../assets/img/Microsoft/5.webp";
+import MS6 from "../../../assets/img/Microsoft/6.webp";
+import MS7 from "../../../assets/img/Microsoft/7.webp";
 
-import Meta1 from "../../../assets/img/Meta/1.jpg";
-import Meta2 from "../../../assets/img/Meta/2.jpg";
-import Meta3 from "../../../assets/img/Meta/3.jpg";
-import Meta4 from "../../../assets/img/Meta/4.jpg";
-import Meta5 from "../../../assets/img/Meta/5.jpg";
-import Meta6 from "../../../assets/img/Meta/6.jpg";
-import Meta7 from "../../../assets/img/Meta/7.jpg";
+import Meta1 from "../../../assets/img/Meta/1.webp";
+import Meta2 from "../../../assets/img/Meta/2.webp";
+import Meta3 from "../../../assets/img/Meta/3.webp";
+import Meta4 from "../../../assets/img/Meta/4.webp";
+import Meta5 from "../../../assets/img/Meta/5.webp";
+import Meta6 from "../../../assets/img/Meta/6.webp";
+import Meta7 from "../../../assets/img/Meta/7.webp";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Certs = () => {
+  const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
-  useState(() => {
+  useEffect(() => {
     const handleResize = () => setInnerWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -60,7 +63,6 @@ const Certs = () => {
       title: "Front-End Developer",
       link: "https://coursera.org/share/16e7f155b8f107ae6fc2bfd6a903a92e",
     },
-
     {
       img: IBM1,
       org: "IBM",
@@ -79,7 +81,6 @@ const Certs = () => {
       title: "Web and Front-End Development",
       link: "https://coursera.org/share/4d2543c756e895fd2c981dddf737d224",
     },
-
     {
       img: MS3,
       org: "Microsoft",
@@ -98,7 +99,6 @@ const Certs = () => {
       title: "Blazor for Front-End",
       link: "https://coursera.org/share/e584cdc3d72ba3f300ca583aabc421f7",
     },
-
     {
       img: Meta3,
       org: "Meta",
@@ -117,7 +117,6 @@ const Certs = () => {
       title: "Version Control",
       link: "https://coursera.org/share/947df04a4cb03b03bbbe3dae668f08da",
     },
-
     {
       img: IBM4,
       org: "IBM",
@@ -154,7 +153,6 @@ const Certs = () => {
       title: "Front-End and Web Development",
       link: "https://coursera.org/share/fa4f1e4be302e128afcf1d18244e67a3",
     },
-
     {
       img: MS1,
       org: "Microsoft",
@@ -204,8 +202,9 @@ const Certs = () => {
 
   return (
     <Content>
-      <div className="certs-container d-flex flex-column" id="certs">
-        <SectionTitle title="مـــدارک" />
+      <section className="certs-container d-flex flex-column" id="certs">
+        <SectionTitle title={t("certs.title")} />
+
         <div className="certs-content mt-5">
           {visibleCerts.map(({ img, org, title, link }, i) => (
             <a
@@ -217,8 +216,9 @@ const Certs = () => {
             >
               <img
                 src={img}
-                alt={`${org} - ${title}`}
+                alt={t("certs.imageAlt", { title, org })}
                 className="w-100 cert-img"
+                loading="lazy"
               />
               <h5 className={`text-center mt-3 ${org.toLowerCase()}`}>
                 <span className="mx-1">{org}</span> {title}
@@ -227,17 +227,18 @@ const Certs = () => {
           ))}
         </div>
 
-        {certs.length > 12 && (
+        {certs.length > (innerWidth > 500 ? 12 : 3) && (
           <button
-            className="mt-5 mx-auto "
+            className="mt-5 mx-auto"
             onClick={() => setShowAll(!showAll)}
+            type="button"
           >
-            {showAll ? "مشاهده کمتر" : "مشاهده بیشتر"}
+            {showAll ? t("certs.showLess") : t("certs.showMore")}
           </button>
         )}
-      </div>
+      </section>
     </Content>
   );
 };
 
-export default Certs;
+export default React.memo(Certs);

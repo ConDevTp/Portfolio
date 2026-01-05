@@ -1,59 +1,83 @@
 import SectionTitle from "../../ui/SectionTitle/SectionTitle";
 import Content from "../Content/Content";
 import "./index.css";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Skill = () => {
+  const { t } = useTranslation();
+
   const skills = [
-    { name: "HTML5", level: "حرفه‌ای", progress: 95 },
-    { name: "CSS3", level: "حرفه‌ای", progress: 95 },
-    { name: "JavaScript (ES6+)", level: "حرفه‌ای", progress: 90 },
-    { name: "TypeScript", level: "حرفه‌ای", progress: 90 },
-    { name: "React.js", level: "حرفه‌ای", progress: 95 },
-    { name: "Next.js", level: "پیشرفته", progress: 85 },
-    { name: "Redux / RTK", level: "حرفه‌ای", progress: 90 },
-    { name: "Tailwind CSS", level: "حرفه‌ای", progress: 90 },
-    { name: "Framer Motion", level: "حرفه‌ای", progress: 85 },
-    { name: "Material-UI (MUI)", level: "حرفه‌ای", progress: 90 },
-    { name: "Bootstrap", level: "حرفه‌ای", progress: 90 },
-    { name: "Sass / SCSS", level: "پیشرفته", progress: 80 },
-    { name: "Node.js", level: "متوسط", progress: 65 },
-    { name: "RESTful APIs", level: "حرفه‌ای", progress: 90 },
-    { name: "Git & GitHub", level: "حرفه‌ای", progress: 90 },
-    { name: "PWA", level: "حرفه‌ای", progress: 85 },
-    { name: "Testing (Jest, RTL)", level: "حرفه‌ای", progress: 85 },
-    { name: "Technical SEO", level: "پیشرفته", progress: 80 },
-    { name: "Figma", level: "حرفه‌ای", progress: 90 },
-    { name: "Adobe XD", level: "حرفه‌ای", progress: 85 },
-    { name: "C# (.NET Basics)", level: "متوسط", progress: 60 },
+    { name: "HTML5", level: "professional", progress: 95 },
+    { name: "CSS3", level: "professional", progress: 95 },
+    { name: "JavaScript (ES6+)", level: "professional", progress: 90 },
+    { name: "TypeScript", level: "professional", progress: 90 },
+    { name: "React.js", level: "professional", progress: 95 },
+    { name: "Next.js", level: "advanced", progress: 85 },
+    { name: "Redux / RTK", level: "professional", progress: 90 },
+    { name: "Tailwind CSS", level: "professional", progress: 90 },
+    { name: "Framer Motion", level: "professional", progress: 85 },
+    { name: "Material-UI (MUI)", level: "professional", progress: 90 },
+    { name: "Bootstrap", level: "professional", progress: 90 },
+    { name: "Sass / SCSS", level: "advanced", progress: 80 },
+    { name: "Node.js", level: "intermediate", progress: 65 },
+    { name: "RESTful APIs", level: "professional", progress: 90 },
+    { name: "Git & GitHub", level: "professional", progress: 90 },
+    { name: "PWA", level: "professional", progress: 85 },
+    { name: "Testing (Jest, RTL)", level: "professional", progress: 85 },
+    { name: "Technical SEO", level: "advanced", progress: 80 },
+    { name: "Figma", level: "professional", progress: 90 },
+    { name: "Adobe XD", level: "professional", progress: 85 },
+    { name: "C# (.NET Basics)", level: "intermediate", progress: 60 },
   ];
 
   return (
     <div className="skill-bg">
       <Content>
-        <div className="skill-container" id="skills">
-          <SectionTitle title="تـخصص ها" />
+        <section
+          className="skill-container"
+          id="skills"
+          aria-labelledby="skills-title"
+        >
+          <SectionTitle title={t("skills.title")} id="skills-title" />
 
-          <div className="skill-content mt-5">
+          <div className="skill-content mt-5" role="list">
             {skills.map((skill, index) => (
-              <div className="progress-item" key={index}>
+              <article className="progress-item" key={index} role="listitem">
                 <div className="d-flex justify-content-between align-items-center flex-row-reverse">
-                  <h6>{skill.name}</h6>
-                  <p>{skill.level}</p>
+                  <h3 className="h6 mb-0">{skill.name}</h3>
+                  <span
+                    className="skill-level"
+                    aria-label={`${t("skills.levelLabel")}: ${t(
+                      `skills.levels.${skill.level}`
+                    )}`}
+                  >
+                    {t(`skills.levels.${skill.level}`)}
+                  </span>
                 </div>
 
-                <div className="progress mt-3">
+                <div
+                  className="progress mt-3"
+                  role="progressbar"
+                  aria-valuenow={skill.progress}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
                   <div
-                    className={`progress-bar bg-warning`}
+                    className="progress-bar bg-warning"
                     style={{ width: `${skill.progress}%` }}
-                  />
+                    aria-hidden="true"
+                  >
+                    <span className="visually-hidden">{skill.progress}%</span>
+                  </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
       </Content>
     </div>
   );
 };
 
-export default Skill;
+export default React.memo(Skill);

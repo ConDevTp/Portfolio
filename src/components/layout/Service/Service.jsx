@@ -12,62 +12,70 @@ import {
   FaChartColumn,
   FaCloudMeatball,
 } from "react-icons/fa6";
+import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Service = () => {
+  const { t } = useTranslation();
+
   return (
     <Content>
-      <div className="service-container" id="services">
-        <SectionTitle title="خـدمات من" />
-        <div className="service-content mt-5 w-100">
-          <div className="service-item">
-            <FaAtom className="service-icon" />
+      <section
+        className="service-container"
+        id="services"
+        aria-labelledby="services-title"
+      >
+        <SectionTitle title={t("services.title")} id="services-title" />
 
-            <h5>طراحی سایت اختصاصی - React.js.</h5>
-          </div>
-          <div className="service-item">
-            <FaImage className="service-icon" />
+        <div className="service-content mt-5 w-100" role="list">
+          <article className="service-item" role="listitem">
+            <FaAtom className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.0")}</h5>
+          </article>
 
-            <h5>تبدیل طراحی فیگما و ... به کد پیکسل ‌پرفکت.</h5>
-          </div>
-          <div className="service-item">
-            <FaImagePortrait className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaImage className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.1")}</h5>
+          </article>
 
-            <h5> وب ‌اپ (داشبورد - فروشگاه - ...).</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaGears className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaImagePortrait className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.2")}</h5>
+          </article>
 
-            <h5>پروژه ‌های پیچیده (SPA/PWA با Next.js و SSR).</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaDisease className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaGears className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.3")}</h5>
+          </article>
 
-            <h5>اضافه کردن فیچر جدید.</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaMedapps className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaDisease className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.4")}</h5>
+          </article>
 
-            <h5>بازاریابی الکترونیکی و سئو.</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaFigma className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaMedapps className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.5")}</h5>
+          </article>
 
-            <h5>طراحی بنر و ... فیگما - ادوبی.</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaChartColumn className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaFigma className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.6")}</h5>
+          </article>
 
-            <h5>مدیریت پروژه و تیم های برنامه نویسی.</h5>
-          </div>{" "}
-          <div className="service-item">
-            <FaCloudMeatball className="service-icon" />
+          <article className="service-item" role="listitem">
+            <FaChartColumn className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.7")}</h5>
+          </article>
 
-            <h5>شبکه و مدیریت سرور.</h5>
-          </div>
+          <article className="service-item" role="listitem">
+            <FaCloudMeatball className="service-icon" aria-hidden="true" />
+            <h5>{t("services.items.8")}</h5>
+          </article>
         </div>
-      </div>
+      </section>
     </Content>
   );
 };
 
-export default Service;
+export default React.memo(Service);
