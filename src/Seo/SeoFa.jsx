@@ -1,0 +1,80 @@
+import { Helmet } from "react-helmet";
+
+const SeoFa = () => (
+  <Helmet>
+    <html lang="fa" dir="rtl" />
+    <title>
+      Arash Ch - Con Dev | توسعه‌دهنده ارشد فرانت‌اند (React.js, TypeScript,
+      Next.js)
+    </title>
+    <meta
+      name="description"
+      content="Arash (Con Dev) - توسعه‌دهنده ارشد فرانت‌اند با بیش از ۶ سال تجربه حرفه‌ای در React.js، TypeScript، Next.js و UI/UX. دارای مدارک رسمی Meta، Microsoft و IBM."
+    />
+    <meta
+      name="keywords"
+      content="Arash, Con Dev, فرانت‌اند, React.js, TypeScript, Next.js, UI/UX, توسعه‌دهنده وب"
+    />
+    <meta name="author" content="Arash Ch - Con Dev" />
+    <meta name="robots" content="index, follow" />
+
+    {/* Open Graph */}
+    <meta
+      property="og:title"
+      content="Arash Ch - Con Dev | توسعه‌دهنده ارشد فرانت‌اند"
+    />
+    <meta
+      property="og:description"
+      content="Arash - متخصص React.js، TypeScript و Next.js با مدارک معتبر بین‌المللی"
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/img/og-image.png" />
+    <meta property="og:url" content="https://condevtp.github.io/Portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fa_IR" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Arash Ch - Con Dev | توسعه‌دهنده ارشد فرانت‌اند"
+    />
+    <meta
+      name="twitter:description"
+      content="متخصص فرانت‌اند - React، TypeScript و Next.js"
+    />
+    <meta name="twitter:image" content="%PUBLIC_URL%/img/og-image.png" />
+
+    {/* Structured Data */}
+    <script type="application/ld+json">
+      {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arash Ch",
+        "alternateName": "Con Dev",
+        "jobTitle": "توسعه‌دهنده ارشد فرانت‌اند",
+        "url": "https://condevtp.github.io/Portfolio/",
+        "sameAs": [
+          "https://www.instagram.com/con.dev",
+          "https://github.com/ConDevTp",
+          "https://www.linkedin.com/in/con-dev-5b43a538b"
+        ],
+        "alumniOf": [
+          { "@type": "Organization", "name": "Meta" },
+          { "@type": "Organization", "name": "Microsoft" },
+          { "@type": "Organization", "name": "IBM" }
+        ],
+        "knowsAbout": [
+          "React.js",
+          "TypeScript",
+          "Next.js",
+          "UI/UX",
+          "Front-End Development"
+        ]
+      }
+      `}
+    </script>
+  </Helmet>
+);
+
+export default SeoFa;

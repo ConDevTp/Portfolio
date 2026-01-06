@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./i18n";
 import AppWrapper from "./AppWrapper";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router";
 
 const root = createRoot(document.getElementById("root"));
 root.render(

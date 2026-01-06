@@ -2,6 +2,8 @@ import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, useParams } from "react-router";
 import App from "./App";
+import SeoFa from "./Seo/SeoFa";
+import SeoEn from "./Seo/SeoEn";
 
 const AppWrapper = () => {
   const { lng } = useParams(); // fa یا en
@@ -22,6 +24,7 @@ const AppWrapper = () => {
 
   return (
     <Suspense fallback={<div className="loading">{t("app.loading")}</div>}>
+      {i18n.language === "fa" ? <SeoFa /> : <SeoEn />}
       <App />
     </Suspense>
   );
