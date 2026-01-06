@@ -1,18 +1,17 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./i18n";
-import AppWrapper from "./AppWrapper"; // همون Wrapper که i18n رو از URL می‌خونه
+import AppWrapper from "./AppWrapper";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/:lng/*" element={<AppWrapper />} />
-        <Route path="*" element={<AppWrapper />} />{" "}
-        {/* مسیر بدون زبان یا اشتباه */}
+        <Route path="/:lng" element={<AppWrapper />} />
+        <Route path="*" element={<AppWrapper />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

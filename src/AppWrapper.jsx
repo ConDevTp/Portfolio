@@ -4,19 +4,21 @@ import { Navigate, useParams } from "react-router";
 import App from "./App";
 
 const AppWrapper = () => {
-  const { lng } = useParams();
+  const { lng } = useParams(); // fa یا en
   const { i18n, t } = useTranslation();
 
   useEffect(() => {
-    if (lng && i18n.language !== lng && (lng === "fa" || lng === "en")) {
-      i18n.changeLanguage(lng);
-      document.documentElement.dir = lng === "fa" ? "rtl" : "ltr";
-      document.documentElement.lang = lng;
+    const lang = lng === "fa" || lng === "en" ? lng : "fa";
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+      document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+      document.documentElement.lang = lang;
     }
   }, [lng, i18n]);
 
+  const defaultLang = "fa";
   if (!lng || (lng !== "fa" && lng !== "en"))
-    return <Navigate to="/fa" replace />;
+    return <Navigate to={`/${defaultLang}`} replace />;
 
   return (
     <Suspense fallback={<div className="loading">{t("app.loading")}</div>}>
