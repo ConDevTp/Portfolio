@@ -7,20 +7,26 @@ import { IoClose } from "react-icons/io5";
 import { useState, useEffect, useCallback } from "react";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [homeInitial, setHomeInitial] = useState(true);
   const { i18n, t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     document.documentElement.dir = lng === "fa" ? "rtl" : "ltr";
     document.documentElement.lang = lng;
+    const parts = location.pathname.split("/").filter(Boolean);
+    if (parts[0] === "fa" || parts[0] === "en") parts[0] = lng;
+    else parts.unshift(lng);
+    navigate("/" + parts.join("/"));
   };
 
   const isFa = i18n.language === "fa";
-
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const handleLogoClick = useCallback((e) => {
@@ -40,7 +46,7 @@ const Header = () => {
   return (
     <Content>
       <header
-        className={`m-header mt-4 d-flex flex-column justify-content-between align-items-center flex-lg-row-reverse ${
+        className={`m-header mt-4 d-flex flex-column justify-content-between align-items-center  ${
           isOpen ? "open" : ""
         }`}
       >
@@ -58,7 +64,7 @@ const Header = () => {
             />
           </a>
 
-          <div className="language-switcher d-flex align-items-center mx-1 mx-md-5">
+          <div className="language-switcher d-flex align-items-center mx-1 mx-md-5 ">
             <button
               onClick={() => changeLanguage("fa")}
               className={`lang-btn ${isFa ? "active" : ""}`}
@@ -66,7 +72,7 @@ const Header = () => {
             >
               FA
             </button>
-            <span className="mx-1 text-white-50">|</span>
+            <span className="mx-1  ">|</span>
             <button
               onClick={() => changeLanguage("en")}
               className={`lang-btn ${!isFa ? "active" : ""}`}
